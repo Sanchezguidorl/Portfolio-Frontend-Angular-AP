@@ -1,1 +1,19 @@
-/* You can add global styles to this file, and also import other style files */
+body, .card{
+  background-color: rgb(207,216,220);
+}
+
+.shadow-down{
+margin-bottom: 7rem;
+  box-shadow: 0px 20rem 2rem -17rem rgba(0, 0, 0, 0.7);
+}
+
+
+/*Clases para contenedor sobre mi*/
+.img-about{
+height: 180px;
+border-radius: 50%;
+}
+
+.div-about{
+  box-shadow: 0 0 2rem 0rem rgb(0, 0, 0,0.7);
+}

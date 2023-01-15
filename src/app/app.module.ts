@@ -3,8 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { InicioComponent } from './components/inicio/inicio.component';
 import { InicioModule } from './components/inicio/inicio.module';
+import { SkillsComponent } from './components/skills/skills.component';
 
 
 

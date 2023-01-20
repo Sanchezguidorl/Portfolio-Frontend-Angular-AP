@@ -36,3 +36,26 @@ border-radius: 50%;
 .carousel-item{
 animation: aparicion 4s;
 }
+
+/*Estilos para seccion de proyectos realizados*/
+
+.shadow-inset{
+  box-shadow: 0px -25px 20px -25px rgba(0,0,0,0.50) inset;
+
+}
+
+.overlay-card{
+  top: 0px;
+  z-index: 1;
+  height: 100% ;
+  width: 100% ;
+  transition: 1.5s;
+}
+
+.overlay-card:hover{
+
+  background-color: rgba(0, 0, 0, 0.5)
+
+}
+
+

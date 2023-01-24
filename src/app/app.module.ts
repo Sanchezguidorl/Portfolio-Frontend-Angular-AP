@@ -4,19 +4,26 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { InicioModule } from './components/inicio/inicio.module';
-import { SkillsComponent } from './components/skills/skills.component';
+import {Routes } from '@angular/router';
+import { RouterModule } from '@angular/router';
+import { InicioComponent } from './components/inicio/inicio.component';
+import { LoginComponent } from './components/login/login.component';
 
-
+const appRoutes:Routes=[
+{path:'', component:InicioComponent},
+{path:'login', component:LoginComponent}
+]
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    LoginComponent
   ],
   imports: [
-    BrowserModule, InicioModule
+    BrowserModule, InicioModule, RouterModule.forRoot(appRoutes)
   ],
   providers: [],
   bootstrap: [AppComponent]

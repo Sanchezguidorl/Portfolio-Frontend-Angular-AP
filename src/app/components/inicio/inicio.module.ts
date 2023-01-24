@@ -3,15 +3,15 @@ import { CommonModule } from '@angular/common';
 import { InicioComponent } from './inicio.component';
 import { SobremiModule } from '../sobremi/sobremi.module';
 import { SkillsComponent } from '../skills/skills.component';
-import { NgCircleProgressModule } from 'ng-circle-progress';
 import { EstudiosModule } from '../sobremi/estudios/estudios.module';
 import { ProyectosModule } from '../proyectos/proyectos.module';
+import { NgCircleProgressModule } from 'ng-circle-progress';
 
 
 @NgModule({
     declarations: [InicioComponent, SkillsComponent],
     imports: [
-    CommonModule, SobremiModule, NgCircleProgressModule.forRoot({}), EstudiosModule,ProyectosModule
+CommonModule, SobremiModule, EstudiosModule,ProyectosModule, NgCircleProgressModule.forRoot({})
     ],
     exports:[InicioComponent],
     providers:[]

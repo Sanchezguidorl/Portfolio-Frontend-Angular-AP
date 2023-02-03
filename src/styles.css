@@ -97,3 +97,37 @@ color: #ffffff !important;
 font-size:24px;
 }
 
+/*estilos para página de login*/
+
+.slow-opacity{
+
+  animation: slowOpacity 5s;
+}
+
+
+@keyframes slowOpacity {
+  0%{
+    opacity: 0;
+  }
+
+
+  100%{
+    opacity: 1;
+  }
+
+}
+.shadow-login{
+
+box-shadow: 0px 0px 10px 5px rgba(29, 30, 43,0.3)
+
+}
+/*Estilos para página de edición de cards*/
+
+
+td, td > img{
+  font-size: small;
+  text-overflow:ellipsis;
+  max-width: 90px;
+  max-height: 60px;
+  overflow: hidden;
+}

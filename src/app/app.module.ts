@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -8,6 +8,7 @@ import {Routes } from '@angular/router';
 import { RouterModule } from '@angular/router';
 import { InicioComponent } from './components/inicio/inicio.component';
 import { LoginComponent } from './components/login/login.component';
+import { EditarModule } from './components/editar/editar.module';
 
 const appRoutes:Routes=[
 {path:'', component:InicioComponent},
@@ -23,9 +24,12 @@ const appRoutes:Routes=[
     LoginComponent
   ],
   imports: [
-    BrowserModule, InicioModule, RouterModule.forRoot(appRoutes)
+    BrowserModule, InicioModule, RouterModule.forRoot(appRoutes), EditarModule
   ],
-  providers: [],
+  providers:[],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+
+
+ }

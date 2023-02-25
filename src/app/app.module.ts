@@ -9,6 +9,10 @@ import { RouterModule } from '@angular/router';
 import { InicioComponent } from './components/inicio/inicio.component';
 import { LoginComponent } from './components/login/login.component';
 import { EditarModule } from './components/editar/editar.module';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './helpers/auth.interceptor';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 const appRoutes:Routes=[
 {path:'', component:InicioComponent},
@@ -17,6 +21,7 @@ const appRoutes:Routes=[
 
 @NgModule({
   declarations: [
+
     AppComponent,
     HeaderComponent,
     HeaderComponent,
@@ -24,9 +29,14 @@ const appRoutes:Routes=[
     LoginComponent
   ],
   imports: [
-    BrowserModule, InicioModule, RouterModule.forRoot(appRoutes), EditarModule
+  BrowserModule, InicioModule, RouterModule.forRoot(appRoutes), EditarModule,
+     FormsModule, HttpClientModule, ModalModule.forRoot()
   ],
-  providers:[],
+  providers:[
+{provide:HTTP_INTERCEPTORS,useClass:AuthInterceptor, multi:true
+}
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

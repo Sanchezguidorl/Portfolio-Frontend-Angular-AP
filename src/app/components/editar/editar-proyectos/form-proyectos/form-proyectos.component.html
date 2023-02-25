@@ -1,1 +1,78 @@
-<p>form-proyectos works!</p>
+<form class="text-start mb-4" method="post" [formGroup]="editarForm" (ngSubmit)="guardar()">
+  <legend class="text-center">{{formCreate===true?"Agreagar proyecto realizado":"Modificar datos de proyecto realizado"}}
+  </legend>
+
+  <div class="row p-3">
+    <div class="form-group col-12 col-sm-6 mb-4 ">
+      <label for="inputNombre" class="form-label" for="">Nombre del proyecto </label>
+      <input formControlName="nombre" id="inputNombre" name="nombre" type="text" class="form-control
+        {{editarForm.get('nombre')?.valid && editarForm.get('nombre')?.touched? 'is-valid':''}}
+        {{editarForm.get('nombre')?.invalid && editarForm.get('nombre')?.touched? 'is-invalid':''}}"
+        placeholder="Ingresa el nombre del proyecto" >
+      <p *ngIf="editarForm.get('nombre')?.invalid && editarForm.get('nombre')?.touched "
+        class="mt-1 mb-0 text-danger fs-6">
+        {{editarForm.get('nombre')?.errors?.['required']? 'El campo es obligatorio':''}}
+        {{editarForm.get('nombre')?.errors?.['minlength']? 'El campo debe tener más caracteres':''}}
+      </p>
+    </div>
+
+    <div class="form-group col-12 col-sm-6 mb-4">
+      <label for="inputUrl" class="form-label" for="">Dirección donde se aloja </label>
+      <input formControlName="url_proyecto" id="inputUrl" type="text" class="form-control
+        {{editarForm.get('url_proyecto')?.valid && editarForm.get('url_proyecto')?.touched? 'is-valid':''}}
+        {{editarForm.get('url_proyecto')?.invalid && editarForm.get('url_proyecto')?.touched? 'is-invalid':''}}"
+        placeholder="Ingresa la url de donde se aloja" >
+      <p *ngIf="editarForm.get('url_proyecto')?.invalid && editarForm.get('url_proyecto')?.touched "
+        class="mt-1 mb-0 text-danger fs-6">
+        {{editarForm.get('url_proyecto')?.errors?.['required']? 'El campo es obligatorio':''}}
+        {{editarForm.get('url_proyecto')?.errors?.['minlength']? 'El campo debe tener más caracteres':''}}
+      </p>
+    </div>
+
+    <div class="form-group col-12 col-sm-6 mb-4">
+      <label for="inputFecha" class="form-label" for="">Fecha de creación </label>
+      <input formControlName="fecha_creacion" id="inputFecha" type="date" class="form-control {{editarForm.get('fecha')?.valid && editarForm.get('fecha')?.touched? 'is-valid':''}}
+      {{editarForm.get('fecha_creacion')?.invalid && editarForm.get('fecha_creacion')?.touched? 'is-invalid':''}}">
+      <p *ngIf="editarForm.get('fecha_creacion')?.invalid && editarForm.get('fecha_creacion')?.touched "
+        class="mt-1 mb-0 text-danger fs-6">
+        {{editarForm.get('fecha_creacion')?.errors?.['required']? 'El campo es obligatorio':''}}
+      </p>
+    </div>
+
+    <div class="form-group col-12 col-sm-6 mb-4 px-3">
+      <label for="inputDescripcion" class="form-label w-100" for="">Descripción del proyecto </label>
+      <textarea placeholder="Describe el proyecto" formControlName="descripcion" class="w-100" name="descripcion" id="descripcion" cols="30" rows="2"></textarea>
+      <p *ngIf="editarForm.get('descripcion')?.invalid && editarForm.get('descripcion')?.touched "
+        class="mt-1 mb-0 text-danger fs-6">
+        {{editarForm.get('descripcion')?.errors?.['required']? 'El campo es obligatorio':''}}
+        {{editarForm.get('descripcion')?.errors?.['minlength']? 'El campo debe contar con al menos 20 caracteres':''}}
+      </p>
+    </div>
+  </div>
+
+
+
+
+
+    <div class="form-group d-flex col-12 col-sm-6 mx-2 mb-3">
+      <div class="me-1 mb-2 mt-5 ">
+        <label for="inputImg" class="form-label" for="inputImg">Miniatura del proyecto</label>
+        <input formControlName="url_miniatura" id="inputImg" name="imgUrl" type="text" [(ngModel)]="imgUrl" class="form-control
+        {{editarForm.get('url_miniatura')?.valid && editarForm.get('url_miniatura')?.touched? 'is-valid':''}}
+        {{editarForm.get('url_miniatura')?.invalid && editarForm.get('url_miniatura')?.touched? 'is-invalid':''}}"
+          placeholder="Ingresa la url del logo">
+        <p *ngIf="editarForm.get('url_miniatura')?.invalid && editarForm.get('url_miniatura')?.touched " class="mt-1 mb-0 text-danger fs-6">
+          {{editarForm.get('url_miniatura')?.errors?.['required']? 'El campo es obligatorio':''}}
+          {{editarForm.get('url_miniatura')?.errors?.['pattern']? 'El campo debe ser un enlace':''}}
+        </p>
+      </div>
+      <img
+        src="{{imgUrl==='' || editarForm.get('urlMiniatura')?.errors?.['pattern']?'https://png.pngtree.com/png-vector/20190223/ourlarge/pngtree-vector-picture-icon-png-image_695350.jpg':imgUrl}}"
+        class="w-50" alt="">
+    </div>
+
+
+  <button class="btn btn-primary mx-3 float-end" [disabled]="!editarForm.valid" type="submit" value="Enviar">
+    Enviar</button>
+</form>
+

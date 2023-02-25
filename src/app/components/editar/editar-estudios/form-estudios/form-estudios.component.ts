@@ -44,14 +44,6 @@ fechaFormateada=moment(this.cursojson.fecha).format("YYYY-MM-DD");
   }
  }
 
-fecha=this.cursojson.fecha;
-ngOnInit(){
-  console.log(this.fecha);
-  console.log(this.fecha);
-  console.log(this.editarForm);
-
-  console.log(moment(this.fecha, "DD/MM/YYYY").toDate());
-}
 
 
 enviarForm(){

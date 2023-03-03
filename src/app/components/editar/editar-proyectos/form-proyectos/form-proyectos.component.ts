@@ -10,8 +10,9 @@ import { ProyectosService } from './../../../../services/proyectos/proyectos.ser
   styleUrls: ['./form-proyectos.component.css'],
 })
 export class FormProyectosComponent {
-  proyectojson: any;
-  proyectoId: number = 0;
+  protected proyectojson: any;
+ protected proyectoId: number = 0;
+ protected agregado:boolean=false;
   formCreate: boolean =
     this.route.url === '/editar/form/add/proyectos' ? true : false;
   imgUrl: string = '';
@@ -20,7 +21,7 @@ export class FormProyectosComponent {
     nombre: new FormControl('', [Validators.required, Validators.minLength(4)]),
     url_proyecto: new FormControl('', [
       Validators.required,
-      Validators.pattern(/^https?:\/\/\S+$/),
+      Validators.pattern(/^https?:\/\/\S+$/),Validators.maxLength(250)
     ]),
     fecha_creacion: new FormControl('', [
       Validators.required,
@@ -71,7 +72,13 @@ export class FormProyectosComponent {
 
   guardar(): void {
     if (this.formCreate === true) {
-      this.service.create(this.editarForm.value).subscribe((arg) => {});
+      this.service.create(this.editarForm.value).subscribe((arg) => {
+        this.agregado=true;
+        this.editarForm.reset();
+       setTimeout(()=>{
+         this.agregado=false
+       }, 4000)
+      });
     } else {
       this.service
         .update(this.proyectoId, this.editarForm.value)

@@ -7,15 +7,15 @@ import { Proyecto } from 'src/app/components/login/models';
   providedIn: 'root',
 })
 export class ProyectosService {
-  private API_GET: string = 'http://localhost:8080/api/proyectos/lista';
+  private API_GET: string = 'https://portfolio-guidosanz.onrender.com/api/proyectos/lista';
 
-  private API_POST: string = 'http://localhost:8080/api/proyectos/agregar';
+  private API_POST: string = 'https://portfolio-guidosanz.onrender.com/api/proyectos/agregar';
 
-  private API_PUT: string = 'http://localhost:8080/api/proyectos/editar/';
+  private API_PUT: string = 'https://portfolio-guidosanz.onrender.com/api/proyectos/editar/';
 
-  private API_DELETE: string = 'http://localhost:8080/api/proyectos/eliminar/';
+  private API_DELETE: string = 'https://portfolio-guidosanz.onrender.com/api/proyectos/eliminar/';
 
-  private API_GET_BY_ID: string = 'http://localhost:8080/api/proyectos/';
+  private API_GET_BY_ID: string = 'https://portfolio-guidosanz.onrender.com/api/proyectos/';
 
   constructor(private http: HttpClient) {}
   getAll(): Observable<any> {

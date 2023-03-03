@@ -1,65 +1,50 @@
-<div class=" col-12 col-md-6 col-xl-4 p-1" *ngFor="let pj of proyectos">
-<div  class="position-relative">
-  <div class="card bg-dark text-white">
-    <img
-      src="https://www.geekmi.news/__export/1670174434904/sites/debate/img/2022/12/04/akatsuki-naruto.jpg_1884277213.jpg"
-      class="card-img" alt="...">
-    <div class="card-img-overlay h-70">
-          <h5 class="card-title ">{{pj.nombre}}</h5>
-          <p class="card-text text-hidden mb-0">{{pj.descripcion}} Lorem, ipsum dolor
-            sit amet consectetur adipisicing elit. Esse exercitationem similique, culpa iure ad hic
-            voluptas possimus a in ab vitae corrupti fugit, ipsam aliquid natus aperiam tempore repudiandae temporibus
-          Lorem ipsum, dolor sit amet consectetur adipisicing
-           elit. Ipsa aliquam dicta corporis, mollitia quo laudantium dignissimos
+
+<div class=" col-12 col-md-6 col-xl-4 p-1" *ngFor="let pj of proyectos?proyectos.slice(0,!mostrarTodos?3:proyectos.length):''">
+  <div id="proyectos-card" class="position-relative" style="background-image: url({{pj.url_miniatura}});
+    background-size: cover; background-position: center;">
+    <div id="card-project" class="card" style="border: none;">
+      <div class="card-img-overlay h-70">
+        <p class="card-title-pj">{{pj.nombre}}</p>
+        <p class="card-text text-hidden mb-0">{{pj.descripcion}} Lorem, ipsum dolor
+          sit amet consectetur adipisicing elit. Esse exercitationem similique, culpa iure ad hic
+          voluptas possimus a in ab vitae corrupti fugit, ipsam aliquid natus aperiam tempore repudiandae temporibus
+          Lorem ipsum, dolor sit amet consectetur adiÑpisicing
+          elit. Ipsa aliquam dicta corporis, mollitia quo laudantium dignissimos
           necessitatibus magni et modi eaque, eligendi dolores.
-           Aperiam consequuntur numquam nihil dolore ipsa vel?</p>
-          <p class="card-text text-end ellipsis">{{pj.fecha}}</p>
+          Aperiam consequuntur numquam nihil dolore ipsa vel?</p>
+        <p class="card-text text-end ellipsis">{{pj.fecha}}</p>
+      </div>
+    </div>
+    <div class="position-absolute overlay-card" data-bs-toggle="modal"
+      [attr.data-bs-target]="'#staticBackdrop'+ pj.id">
+    </div>
+    <!-- Modal -->
+    <div class="modal fade text-dark" id="staticBackdrop{{pj.id}}" data-bs-backdrop="static"
+      data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">{{pj.nombre}}</h5>
+          </div>
+          <div class="modal-body">
+            <div class="container row">
+              <img src="{{pj.url_miniatura}}" class="img-fluid c-12" alt="...">
+              <div class="w-100 c-12">
+                <p class="pt-3 text-wrap-description">
+                  {{pj.descripcion}}
+                </p>
+              <a role="button" href="https://www.w3schools.com" target="_blank"
+                class="text-white fs-4 d-block text-center border rounded bg-secondary  py-2">
+                <i class="fa-solid fa-link pe-3"></i>
+                <strong>Visitar sitio del proyecto</strong>
+              </a>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          </div>
         </div>
-      </div>
-  <div class="position-absolute overlay-card" style="cursor: pointer;" data-bs-toggle="modal" [attr.data-bs-target]="'#staticBackdrop'+ pj.id">
-  </div>
-  <!-- Modal -->
-<div class="modal fade text-secondary" id="staticBackdrop{{pj.id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">{{pj.nombre}}</h5>
-      </div>
-      <div class="modal-body">
-        <div class="container">
-          <img
-          src="https://www.geekmi.news/__export/1670174434904/sites/debate/img/2022/12/04/akatsuki-naruto.jpg_1884277213.jpg"
-          class="img-fluid" alt="...">
-
-          <p class="pt-3" >
-            Lorem, ipsum dolor sit amet
-             consectetur adipisicing elit.
-             Explicabo quam deleniti odit delectus autem ipsa porro maxime! Nisi dolorem,
-              doloremque aperiam eaque enim ullam adipisci perferendis, quod, nulla ex a?
-            {{pj.descripcion}}
-            Lorem, ipsum dolor sit amet
-             consectetur adipisicing elit.
-             Explicabo quam deleniti odit delectus autem ipsa porro maxime! Nisi dolorem,
-              doloremque aperiam eaque enim ullam adipisci perferendis, quod, nulla ex a?
-            {{pj.descripcion}}
-            Lorem, ipsum dolor sit amet
-             consectetur adipisicing elit.
-             Explicabo quam deleniti odit delectus autem ipsa porro maxime! Nisi dolorem,
-              doloremque aperiam eaque enim ullam adipisci perferendis, quod, nulla ex a?
-            {{pj.descripcion}}
-          </p>
-
-          <a  role="button" href="https://www.w3schools.com" target="_blank" class="text-white fs-4 d-block text-center border rounded bg-primary  py-2">
-              <i class="fa-solid fa-link pe-3"></i>
-              <strong>Visitar sitio del proyecto</strong>
-          </a>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
       </div>
     </div>
   </div>
-</div>
-</div>
 </div>

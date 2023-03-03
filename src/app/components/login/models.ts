@@ -12,7 +12,7 @@ export interface Proyecto {
 export interface Estudio {
   nombre_institucion: string;
   fecha_inicio: string;
-  descripcion: string;
+  nombre_curso: string;
   estado_cursado: string;
 }
 export interface JwtTokenExpiration {

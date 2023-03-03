@@ -7,15 +7,15 @@ import { Estudio } from './../../components/login/models';
   providedIn: 'root',
 })
 export class EstudiosService {
-  private API_GET: string = 'http://localhost:8080/api/estudios/lista';
+  private API_GET: string = 'https://portfolio-guidosanz.onrender.com/api/estudios/lista';
 
-  private API_GETBYID: string = 'http://localhost:8080/api/estudios/';
+  private API_GETBYID: string = 'https://portfolio-guidosanz.onrender.com/api/estudios/';
 
-  private API_POST: string = 'http://localhost:8080/api/estudios/agregar';
+  private API_POST: string = 'https://portfolio-guidosanz.onrender.com/api/estudios/agregar';
 
-  private API_PUT: string = 'http://localhost:8080/api/estudios/editar/';
+  private API_PUT: string = 'https://portfolio-guidosanz.onrender.com/api/estudios/editar/';
 
-  private API_DELETE: string = 'http://localhost:8080/api/estudios/eliminar/';
+  private API_DELETE: string = 'https://portfolio-guidosanz.onrender.com/api/estudios/eliminar/';
 
   constructor(private http: HttpClient) {}
 
@@ -26,13 +26,13 @@ export class EstudiosService {
   public getById(id: number): Observable<any> {
     return this.http.get(this.API_GETBYID + id);
   }
-  public add(estudio:Estudio): Observable<any> {
-    return this.http.get(this.API_POST);
+  public add(estudio: Estudio): Observable<any> {
+    return this.http.post(this.API_POST, estudio);
   }
-  public update(id: number): Observable<any> {
-    return this.http.get(this.API_PUT + id);
+  public update(id: number,data:Estudio): Observable<any> {
+    return this.http.put(this.API_PUT + id,data);
   }
   public delete(id: number): Observable<any> {
-    return this.http.get(this.API_DELETE + id);
+    return this.http.delete(this.API_DELETE + id);
   }
 }

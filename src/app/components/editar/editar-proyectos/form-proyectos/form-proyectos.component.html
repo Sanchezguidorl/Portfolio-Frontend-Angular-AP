@@ -1,4 +1,5 @@
 <form class="text-start mb-4" method="post" [formGroup]="editarForm" (ngSubmit)="guardar()">
+  <p *ngIf="agregado" class="mb-2 bg-success text-white text-center py-2 position-sticky align-middle px-2">El proyecto se ha agregado de manera correcta</p>
   <legend class="text-center">{{formCreate===true?"Agreagar proyecto realizado":"Modificar datos de proyecto realizado"}}
   </legend>
 
@@ -26,6 +27,7 @@
         class="mt-1 mb-0 text-danger fs-6">
         {{editarForm.get('url_proyecto')?.errors?.['required']? 'El campo es obligatorio':''}}
         {{editarForm.get('url_proyecto')?.errors?.['minlength']? 'El campo debe tener más caracteres':''}}
+        {{editarForm.get('url_proyecto')?.errors?.['maxlength']? 'La URL ingresada es muy extensa':''}}
       </p>
     </div>
 

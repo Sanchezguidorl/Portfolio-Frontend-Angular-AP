@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse, HttpHeaders } from '@angular/common/http';
-import { BehaviorSubject, map, Observable } from 'rxjs';
+import { BehaviorSubject, catchError, map, Observable, throwError } from 'rxjs';
 import { Credentials, JwtTokenExpiration } from './models';
 import jwtDecode from 'jwt-decode';
 
@@ -28,7 +28,7 @@ export class AuthenticationService {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json'
     });
-    return this.http.post('http://localhost:8080/login', creds, { headers, observe: 'response' }).pipe(
+    return this.http.post('https://portfolio-guidosanz.onrender.com/login', creds, { headers, observe: 'response' }).pipe(
       map((response: HttpResponse<any>) => {
         const body = response.body;
         const headers = response.headers;
@@ -37,6 +37,8 @@ export class AuthenticationService {
         localStorage.setItem('token', JSON.stringify(token));
         this.authenticated.next(true);
         return body;
+      }), catchError((error: any) => {
+        return throwError(()=>error);
       })
     );
   }

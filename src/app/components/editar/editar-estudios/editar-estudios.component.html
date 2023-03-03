@@ -10,37 +10,49 @@
       </tr>
     </thead>
     <tbody>
-      <tr class="">
-        <td class="align-middle  py-md-2 px-2 ">Maasdasasdsaddsadrk</td>
+      <tr class="" *ngFor="let estudio of estudios">
+        <td class="align-middle  py-md-2 px-2 ">{{estudio.nombre_institucion}}</td>
         <td class="align-middle py-md-2 px-2">
-          111111111111111111111111asdlksssssssssssssssajdklasdsaddddddddddddddddddasjwqedasdasdasdsadsad </td>
-        <td class="align-middle py-md-2 px-2">@masdsadsadsadsadsaddo</td>
+          {{estudio.nombre_curso}} </td>
+        <td class="align-middle py-md-2 px-2">{{estudio.estado_cursado}}</td>
         <td class="align-middle ">
-          <a class="m-1 px-3 py-2 btn btn-warning" href="editar/form/estudios"><i class=" fa-solid fa-pen-to-square"></i></a>
-          <button class="m-1 px-3 py-2 btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i
-            class=" fa-solid fa-trash-can"></i></button>
-        <!-- Modal -->
-        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-          aria-labelledby="staticBackdropLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <a class="m-1 px-3 py-2 btn btn-warning" [routerLink]="['form',estudio.id]"><i
+              class=" fa-solid fa-pen-to-square"></i></a>
+          <button class="m-1 px-3 py-2 btn btn-danger" data-bs-toggle="modal"
+            [attr.data-bs-target]="'#staticBackdrop'+ estudio.id"><i class=" fa-solid fa-trash-can"></i></button>
+          <!-- Modal -->
+          <div class="modal fade" id="staticBackdrop{{estudio.id}}" data-bs-backdrop="static" data-bs-keyboard="false"
+            tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content" *ngIf="!eliminado">
+                <div class="modal-header">
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <p class="h4">¿Está seguro de querer eliminar éste curso?</p>
+                </div>
+                <div class="modal-footer justify-content-between">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                  <a type="button" class="btn btn-danger" (click)="eliminar(estudio.id)">Sí, eliminar</a>
+                </div>
               </div>
-              <div class="modal-body">
-                <p class="h4">¿Está seguro de querer eliminar éste curso?</p>
-              </div>
-              <div class="modal-footer justify-content-between">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                <a type="button" class="btn btn-danger">Sí, eliminar</a>
+              <div class="modal-content" *ngIf="eliminado">
+                <div class="modal-header">
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)=" traerTodos()"></button>
+                </div>
+                <div class="modal-body">
+                  <i class="fs-1 text-success fa-regular fa-circle-check"></i>
+                  <p class="h4">El curso se ha eliminado de manera correcta</p>
+                </div>
+                <div class="modal-footer justify-content-between">
+                </div>
               </div>
             </div>
           </div>
-        </div>
         </td>
       </tr>
     </tbody>
   </table>
 </div>
 <a href="editar/form/add/estudios"><button class="btn btn-light border-bottom border-top  float-center"><i
-    class="fa-solid fa-plus pe-2 "></i>Agregar</button></a>
+      class="fa-solid fa-plus pe-2 "></i>Agregar</button></a>

@@ -1,70 +1,71 @@
-<form class="text-start mb-4" [formGroup]="editarForm" method="post" #form="ngForm" (ngSubmit)="enviarForm()">
+<form class="text-start mb-4" [formGroup]="editarForm" method="post" #form="ngForm" (ngSubmit)="guardar()">
+  <p *ngIf="agregado" class="mb-2 bg-success text-white text-center py-2 position-sticky align-middle px-2">El curso se ha agregado de manera correcta</p>
   <legend class="text-center">{{formCreate===true?"Agreagar curso realizado":"Modificar datos de curso realizado"}}
   </legend>
 
   <div class="row p-3">
     <div class="form-group col-12 col-sm-6 mb-4 ">
       <label for="inputInsti" class="form-label" for="">Nombre de instituto </label>
-      <input formControlName="instituto" id="inputInsti" name="" type="text" class="form-control
-        {{editarForm.get('instituto')?.valid && editarForm.get('instituto')?.touched? 'is-valid':''}}
-        {{editarForm.get('instituto')?.invalid && editarForm.get('instituto')?.touched? 'is-invalid':''}}"
-        placeholder="Ingresa el nombre del instituto" >
-      <p *ngIf="editarForm.get('instituto')?.invalid && editarForm.get('instituto')?.touched "
+      <input formControlName="nombre_institucion" id="inputInsti" name="" type="text" class="form-control
+        {{editarForm.get('nombre_institucion')?.valid && editarForm.get('nombre_institucion')?.touched? 'is-valid':''}}
+        {{editarForm.get('nombre_institucion')?.invalid && editarForm.get('nombre_institucion')?.touched? 'is-invalid':''}}"
+        placeholder="Ingresa el nombre de la institución" >
+      <p *ngIf="editarForm.get('nombre_institucion')?.invalid && editarForm.get('nombre_institucion')?.touched "
         class="mt-1 mb-0 text-danger fs-6">
-        {{editarForm.get('instituto')?.errors?.['required']? 'El campo es obligatorio':''}}
-        {{editarForm.get('instituto')?.errors?.['minlength']? 'El campo debe tener más caracteres':''}}
+        {{editarForm.get('nombre_institucion')?.errors?.['required']? 'El campo es obligatorio':''}}
+        {{editarForm.get('nombre_institucion')?.errors?.['minlength']? 'El campo debe tener más caracteres':''}}
       </p>
     </div>
 
     <div class="form-group col-12 col-sm-6 mb-4">
       <label for="inputCurso" class="form-label" for="">Curso </label>
-      <input formControlName="curso" id="inputCurso" type="text" class="form-control
-        {{editarForm.get('curso')?.valid && editarForm.get('curso')?.touched? 'is-valid':''}}
-        {{editarForm.get('curso')?.invalid && editarForm.get('curso')?.touched? 'is-invalid':''}}"
-        placeholder="Ingresa el nombre del curso" >
-      <p *ngIf="editarForm.get('curso')?.invalid && editarForm.get('curso')?.touched "
+      <input formControlName="nombre_curso" id="inputCurso" type="text" class="form-control
+        {{editarForm.get('nombre_curso')?.valid && editarForm.get('nombre_curso')?.touched? 'is-valid':''}}
+        {{editarForm.get('nombre_curso')?.invalid && editarForm.get('nombre_curso')?.touched? 'is-invalid':''}}"
+        placeholder="Ingresa el nombre del nombre_curso" >
+      <p *ngIf="editarForm.get('nombre_curso')?.invalid && editarForm.get('nombre_curso')?.touched "
         class="mt-1 mb-0 text-danger fs-6">
-        {{editarForm.get('curso')?.errors?.['required']? 'El campo es obligatorio':''}}
-        {{editarForm.get('curso')?.errors?.['minlength']? 'El campo debe tener más caracteres':''}}
+        {{editarForm.get('nombre_curso')?.errors?.['required']? 'El campo es obligatorio':''}}
+        {{editarForm.get('nombre_curso')?.errors?.['minlength']? 'El campo debe tener más caracteres':''}}
       </p>
     </div>
 
     <div class="form-group col-12 col-sm-6 mb-4">
       <label for="inputFecha" class="form-label" for="">Fecha de inicio </label>
-      <input formControlName="fecha" id="inputFecha" type="date" class="form-control {{editarForm.get('fecha')?.valid && editarForm.get('fecha')?.touched? 'is-valid':''}}
-      {{editarForm.get('fecha')?.invalid && editarForm.get('fecha')?.touched? 'is-invalid':''}}">
-      <p *ngIf="editarForm.get('fecha')?.invalid && editarForm.get('fecha')?.touched "
+      <input formControlName="fecha_inicio" id="inputFecha" type="date" class="form-control {{editarForm.get('fecha_inicio')?.valid && editarForm.get('fecha_inicio')?.touched? 'is-valid':''}}
+      {{editarForm.get('fecha_inicio')?.invalid && editarForm.get('fecha_inicio')?.touched? 'is-invalid':''}}">
+      <p *ngIf="editarForm.get('fecha_inicio')?.invalid && editarForm.get('fecha_inicio')?.touched "
         class="mt-1 mb-0 text-danger fs-6">
-        {{editarForm.get('fecha')?.errors?.['required']? 'El campo es obligatorio':''}}
+        {{editarForm.get('fecha_inicio')?.errors?.['required']? 'El campo es obligatorio':''}}
       </p>
     </div>
 
     <div class="form-group col-12 col-sm-6 mb-4">
-      <label for="inputEstado" class="form-label" for="">Estado </label>
-      <select formControlName="estado" id="inputEstado" name="estado" class="form-control custom-select
-      {{editarForm.get('estado')?.valid && editarForm.get('estado')?.touched? 'is-valid':''}}
-      {{editarForm.get('estado')?.invalid && editarForm.get('estado')?.touched? 'is-invalid':''}}" id="">
+      <label for="inputestado_cursado" class="form-label" for="">Estado </label>
+      <select formControlName="estado_cursado" id="inputestado_cursado" name="estado_cursado" class="form-control custom-select
+      {{editarForm.get('estado_cursado')?.valid && editarForm.get('estado_cursado')?.touched? 'is-valid':''}}
+      {{editarForm.get('estado_cursado')?.invalid && editarForm.get('estado_cursado')?.touched? 'is-invalid':''}}" id="">
         <option value="" disabled selected>--Sellecionar--</option>
         <option value="Finalizado">Finalizado</option>
         <option value="En curso">En curso</option>
       </select>
-      <p *ngIf="editarForm.get('estado')?.invalid && editarForm.get('estado')?.touched "
+      <p *ngIf="editarForm.get('estado_cursado')?.invalid && editarForm.get('estado_cursado')?.touched "
         class="mt-1 mb-0 text-danger fs-6">
-        {{editarForm.get('estado')?.errors?.['required']? 'El campo es obligatorio':''}}
+        {{editarForm.get('estado_cursado')?.errors?.['required']? 'El campo es obligatorio':''}}
       </p>
     </div>
 
     <div class="form-group d-flex col-12 col-sm-6 mb-2">
       <div class="me-3 mb-2 mt-5 ">
         <label for="inputImg" class="form-label" for="inputImg">Logo de institución</label>
-        <input formControlName="url" id="inputImg" name="imgUrl" type="text" [(ngModel)]="imgUrl" class="form-control
-        {{editarForm.get('url')?.valid && editarForm.get('url')?.touched? 'is-valid':''}}
-        {{editarForm.get('url')?.invalid && editarForm.get('url')?.touched? 'is-invalid':''}}"
+        <input formControlName="url_logo" id="inputImg" name="imgUrl_logo" type="text" [(ngModel)]="imgUrl" class="form-control
+        {{editarForm.get('url_logo')?.valid && editarForm.get('url_logo')?.touched? 'is-valid':''}}
+        {{editarForm.get('url_logo')?.invalid && editarForm.get('url_logo')?.touched? 'is-invalid':''}}"
           placeholder="Ingresa la URL del logo">
-        <p *ngIf="editarForm.get('url')?.invalid && editarForm.get('url')?.touched " class="mt-1 mb-0 text-danger fs-6">
-          {{editarForm.get('url')?.errors?.['required']? 'El campo es obligatorio':''}}
-          {{editarForm.get('url')?.errors?.['minlength']? 'El campo debe tener más caracteres':''}}
-          {{editarForm.get('url')?.errors?.['pattern']? 'El campo debe ser un enlace':''}}
+        <p *ngIf="editarForm.get('url_logo')?.invalid && editarForm.get('url_logo')?.touched " class="mt-1 mb-0 text-danger fs-6">
+          {{editarForm.get('url_logo')?.errors?.['required']? 'El campo es obligatorio':''}}
+          {{editarForm.get('url_logo')?.errors?.['minlength']? 'El campo debe tener más caracteres':''}}
+          {{editarForm.get('url_logo')?.errors?.['pattern']? 'El campo debe ser un enlace':''}}
         </p>
       </div>
       <img

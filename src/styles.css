@@ -25,6 +25,11 @@ border-radius: 50%;
 .div-about{
   box-shadow: 0 0 2rem 0rem rgb(0, 0, 0,0.7);
 }
+.max-heightEst{
+  height: 80px;
+  max-height: 80px;
+  overflow-y: hidden;
+}
 
 /*Animacion para carrusel*/
 @keyframes aparicion {
@@ -46,10 +51,14 @@ animation: aparicion 4s;
 }
 
 /*Estilos para seccion de proyectos realizados*/
-
+#proyectos-card{
+  height: 200px;
+  max-height: 200px;
+  border: 2px #666666 solid;
+  border-radius: 8px;
+}
 .shadow-inset{
   box-shadow: 0px -25px 20px -25px rgba(0,0,0,0.50) inset;
-
 }
 .text-hidden{
   overflow: hidden;
@@ -60,45 +69,72 @@ animation: aparicion 4s;
   font-size: 23px;
 margin-right: 92%;
   font-weight: bold;
-  color: rgb(255, 255, 255);
+  color: #a3abb3;
+  text-shadow:
+  -1px -1px 0 #000,
+   1px -1px 0 #000,
+  -1px  1px 0 #000,
+   .5px  .5px 0 #000;
   content: '. . .\A';
   white-space: pre;
 }
+
 .overlay-card{
   top: 0px;
-  z-index: 3;
+  z-index: 1;
   height: 100% ;
   width: 100% ;
   transition: 1.5s;
-
+  cursor: pointer;
 }
+
 
 .overlay-card:hover{
-
-  background-color: rgba(0, 0, 0, 0.5)
-
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
+#card-project{
+font-family: 'Montserrat';
+color: #a3abb3;
+text-shadow:
+-1px -1px 0 #333,
+ 1px -1px 0 #333,
+-1px  1px 0 #333,
+ .5px  .5px 0 #333;
+font-weight:600;
+  transition: 4s;
+}
+.card-title-pj{
+font-size: 1.5em;
+}
+
+.text-wrap-description{
+  word-wrap: break-word;
+}
 a.bg-primary:hover{
   background-color:#004797 !important;
 
 }
 
 .btn-ver-todos{
+  transition: 1s;
   z-index: 200;
+  border: none;
   background: linear-gradient(rgba(0, 0, 0, 0.034),rgba(40, 45, 45, 0.94),rgb(40, 45, 45));
 }
 
 
 
-.btn-ver-todos a:hover{
-  transition: .4s;
+.btn-ver-todos:hover{
+
 color: #ffffff !important;
 font-size:24px;
 }
 
 /*estilos para página de login*/
-
+.login-ok{
+  height: 60vh;
+}
 .slow-opacity{
 
   animation: slowOpacity 5s;
@@ -131,3 +167,4 @@ td, td > img{
   max-height: 60px;
   overflow: hidden;
 }
+

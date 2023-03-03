@@ -11,7 +11,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 const appRoutes:Routes=[
   {path:'editar', component:EditarComponent,
 children:[
-  {path:'form/estudios', component:FormEstudiosComponent},
+  {path:'estudios/form/:id', component:FormEstudiosComponent},
   {path:'form/add/estudios', component:FormEstudiosComponent},
   {path:'proyectos/form/:id', component:FormProyectosComponent},
   {path:'form/add/proyectos', component:FormProyectosComponent},

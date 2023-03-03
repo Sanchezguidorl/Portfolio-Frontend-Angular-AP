@@ -3,7 +3,8 @@
   <div >
       <app-pj-realizados class="row mx-1 px-2 justify-content-center"></app-pj-realizados>
   </div>
-  <div class="btn-ver-todos position-absolute w-100 bottom-0">
-    <a href="#" class=" pt-5 text-center h4 d-block pb-2 text-secondary mb-5">Ver todos los proyectos</a>
-  </div>
+  <button *ngIf="!mostrar" class="btn-ver-todos position-absolute w-100 bottom-0 py-5 text-center h4 d-block text-secondary"
+ (click)="mostrarMas(true)">Ver todos los proyectos</button>
+  <button *ngIf="mostrar" class="btn-ver-todos position-absolute w-100 bottom-0 py-5 text-center h4 d-block text-secondary"
+ (click)="mostrarMas(false)">Ver menos</button>
 </div>

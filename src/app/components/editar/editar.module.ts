@@ -8,15 +8,16 @@ import { RouterModule } from '@angular/router';
 import { FormEstudiosComponent } from './editar-estudios/form-estudios/form-estudios.component';
 import { FormProyectosComponent } from './editar-proyectos/form-proyectos/form-proyectos.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AdminGuard } from 'src/app/admin.guard';
 const appRoutes:Routes=[
   {path:'editar', component:EditarComponent,
 children:[
-  {path:'estudios/form/:id', component:FormEstudiosComponent},
-  {path:'form/add/estudios', component:FormEstudiosComponent},
-  {path:'proyectos/form/:id', component:FormProyectosComponent},
-  {path:'form/add/proyectos', component:FormProyectosComponent},
-  {path:'estudios', component:EditarEstudiosComponent},
-  {path:'proyectos', component:EditarProyectosComponent}
+  {path:'estudios/form/:id', component:FormEstudiosComponent, canActivate:[AdminGuard]},
+  {path:'form/add/estudios', component:FormEstudiosComponent, canActivate:[AdminGuard]},
+  {path:'proyectos/form/:id', component:FormProyectosComponent, canActivate:[AdminGuard]},
+  {path:'form/add/proyectos', component:FormProyectosComponent, canActivate:[AdminGuard]},
+  {path:'estudios', component:EditarEstudiosComponent, canActivate:[AdminGuard]},
+  {path:'proyectos', component:EditarProyectosComponent, canActivate:[AdminGuard]}
 
 ]
 }

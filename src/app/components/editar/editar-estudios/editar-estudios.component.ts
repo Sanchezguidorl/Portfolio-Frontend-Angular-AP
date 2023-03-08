@@ -10,16 +10,17 @@ import { Observable } from 'rxjs';
 export class EditarEstudiosComponent implements OnInit {
   protected eliminado: boolean = false;
   protected estudios: any;
+  protected loading: boolean=true;
   constructor(private service: EstudiosService) {}
 
   ngOnInit(): void {
     this.traerTodos();
-    console.log(this.estudios);
   }
   traerTodos() {
-    return this.service.getAll().subscribe((estudio) => {
+     this.service.getAll().subscribe((estudio) => {
       this.estudios = estudio;
       setTimeout(()=>{
+        this.loading=false;
         this.eliminado=false;
       },1000)
     });

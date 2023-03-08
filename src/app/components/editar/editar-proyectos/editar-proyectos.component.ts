@@ -1,16 +1,15 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ProyectosService } from './../../../services/proyectos/proyectos.service';
 
-
 @Component({
   selector: 'app-editar-proyectos',
   templateUrl: './editar-proyectos.component.html',
   styleUrls: ['./editar-proyectos.component.css'],
 })
-export class EditarProyectosComponent implements OnInit{
+export class EditarProyectosComponent implements OnInit {
   protected proyectos: any;
   protected eliminado: boolean = false;
-
+  protected loading: boolean = true;
 
   constructor(
     private service: ProyectosService,
@@ -18,14 +17,15 @@ export class EditarProyectosComponent implements OnInit{
   ) {}
 
   ngOnInit(): void {
-this.getAll();
+    this.getAll();
   }
 
-  getAll():void{
-    this.service.getAll().subscribe(e=>this.proyectos=e);
-setTimeout(()=>{
-  this.eliminado=false;
-},2000)
+  getAll(): void {
+    this.service.getAll().subscribe((e) => (this.proyectos = e));
+    setTimeout(() => {
+      this.loading=false;
+      this.eliminado = false;
+    }, 2000);
   }
 
   eliminar(id: number): void {

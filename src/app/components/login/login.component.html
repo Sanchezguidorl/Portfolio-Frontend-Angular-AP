@@ -1,32 +1,44 @@
-<div *ngIf="!aprobado" class="container ">
-  <div class="row slow-opacity justify-content-center">
-    <div class="col-12 col-md-6 bg-light py-4 my-5 shadow-login">
-      <h1 class="text-center mb-5 fw-bold h3 mt-4">IDENTIFICARME</h1>
+<div *ngIf="!loading">
+  <div *ngIf="!aprobado" class="container ">
+    <div class="row slow-opacity justify-content-center">
+      <div class="col-12 col-md-6 bg-light py-4 my-5 shadow-login">
+        <h1 class="text-center mb-5 fw-bold h3 mt-4">IDENTIFICARME</h1>
 
-      <div class="mx-md-5 mx-2">
-        <form class="form-vertical" method="post" #form="ngForm" (ngSubmit)="login(form)">
-          <p class="text-danger" *ngIf="!validado">Las credenciales ingresadas son incorrectas</p>
-          <fieldset>
-            <label for="username" class="form-label text-secondary fw-bold">Correo electrónico</label>
-            <div class="input-group my-3">
-              <input id="username" class="form-control" type="email" name="nombre" placeholder="Ingresar e-mail" [(ngModel)]="creds.email" required>
-              <span class="input-group-text"><i class="fa-solid fa-at"></i></span>
-            </div>
-            <label for="pwd" class="form-label text-secondary fw-bold mt-4">Contraseña</label>
-            <div class="mt-3 mb-5 input-group">
-              <input type="password" class="form-control" id="pwd" placeholder="Ingresar contraseña" name="password"  [(ngModel)]="creds.password"required>
-              <span class="input-group-text"><i class="fa-solid fa-key"></i></span>
-            </div>
-            <input class="btn btn-secondary w-100 py-2 mb-5" type="submit" name="" id="" value="Validar">
-          </fieldset>
-        </form>
+        <div class="mx-md-5 mx-2">
+          <form class="form-vertical" method="post" #form="ngForm" (ngSubmit)="login(form)">
+            <p class="text-danger" *ngIf="!validado">Las credenciales ingresadas son incorrectas</p>
+            <fieldset>
+              <label for="username" class="form-label text-secondary fw-bold">Correo electrónico</label>
+              <div class="input-group my-3">
+                <input id="username" class="form-control" type="email" name="nombre" placeholder="Ingresar e-mail"
+                  [(ngModel)]="creds.email" required>
+                <span class="input-group-text"><i class="fa-solid fa-at"></i></span>
+              </div>
+              <label for="pwd" class="form-label text-secondary fw-bold mt-4">Contraseña</label>
+              <div class="mt-3 mb-5 input-group">
+                <input type="password" class="form-control" id="pwd" placeholder="Ingresar contraseña" name="password"
+                  [(ngModel)]="creds.password" required>
+                <span class="input-group-text"><i class="fa-solid fa-key"></i></span>
+              </div>
+              <input class="btn btn-secondary w-100 py-2 mb-5" type="submit" name="" id="" value="Validar">
+            </fieldset>
+          </form>
+        </div>
       </div>
     </div>
   </div>
 </div>
-<div *ngIf="aprobado" class="bg bg-light slow-opacity d-flex login-ok align-items-center" >
-<div class="text-center mx-auto">
-  <i class="fs-1 text-success fa-regular fa-circle-check"></i>
-  <h1 class="text-success">Validación aprobada</h1>
+<div *ngIf="loading" class="loadingio-eclipse bg-light w-100 container">
+  <div class="ldio-rpinwye8j0b ">
+    <div>
+    </div>
+  </div>
 </div>
+
+
+<div *ngIf="aprobado" class="bg bg-light slow-opacity d-flex login-ok align-items-center">
+  <div class="text-center mx-auto">
+    <i class="fs-1 text-success fa-regular fa-circle-check"></i>
+    <h1 class="text-success">Validación aprobada</h1>
+  </div>
 </div>

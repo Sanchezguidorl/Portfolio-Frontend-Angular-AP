@@ -11,9 +11,9 @@ import { catchError } from 'rxjs';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
-  protected validado:boolean=true;
-  protected aprobado:boolean=false;
-
+  protected validado: boolean = true;
+  protected aprobado: boolean = false;
+  protected loading: boolean = false;
   creds: Credentials = {
     email: '',
     password: '',
@@ -24,18 +24,19 @@ export class LoginComponent {
     private route: Router
   ) {}
 
-
-
   login(form: NgForm) {
+    this.loading = true;
     this.apiService.login(this.creds).subscribe(
       (response) => {
+        this.loading = false;
         this.validado = true;
         this.aprobado = true;
-   setTimeout(() => {
-    this.route.navigate(['']);
-   }, 6000);
+        setTimeout(() => {
+          this.route.navigate(['']);
+        }, 6000);
       },
       (error) => {
+        this.loading = false;
         this.validado = false;
       }
     );

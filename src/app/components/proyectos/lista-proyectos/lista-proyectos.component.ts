@@ -18,7 +18,6 @@ this.service.getMostrar().subscribe((mostrar)=>this.mostrar=mostrar)
 }
 mostrarMas(bool:boolean):void{
   this.service.mostrarProductos(bool);
-
 }
 
 

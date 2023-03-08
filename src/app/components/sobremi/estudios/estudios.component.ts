@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { EstudiosService } from 'src/app/services/estudios/estudios.service';
-import { Observable } from 'rxjs';
 @Component({
   selector: 'app-estudios',
   templateUrl: './estudios.component.html',
@@ -8,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class EstudiosComponent {
   protected estudios: any;
-
+protected loading:boolean=true;
   constructor(private service: EstudiosService) {}
 
   ngOnInit(): void {
@@ -16,8 +15,12 @@ export class EstudiosComponent {
   }
 
   cursosLista(): any {
+
     return this.service.getAll().subscribe((estudios) => {
       this.estudios = estudios;
+ setTimeout(() => {
+  this.loading=false;
+ }, 2000);
     });
   }
 }

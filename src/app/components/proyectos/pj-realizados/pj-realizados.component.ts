@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProyectosService } from './../../../services/proyectos/proyectos.service';
 import { MostrarProyectosService } from './../../../services/mostrar-proyectos.service';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-pj-realizados',
@@ -10,6 +9,7 @@ import { Observable } from 'rxjs';
 })
 export class PjRealizadosComponent implements OnInit{
 protected mostrarTodos=false;
+protected loading:boolean=true;
 protected proyectos:any;
 constructor(private service:ProyectosService, private serviceMostrar:MostrarProyectosService){
 }
@@ -17,6 +17,9 @@ constructor(private service:ProyectosService, private serviceMostrar:MostrarProy
 ngOnInit():void{
 this.service.getAll().subscribe(proyecto=>{
   this.proyectos=proyecto;
+  setTimeout(() => {
+    this.loading=false;
+  }, 2000);
 });
 
 this.serviceMostrar.getMostrar().subscribe((mostrar)=>this.mostrarTodos=mostrar);

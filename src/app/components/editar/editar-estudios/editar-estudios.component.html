@@ -1,5 +1,5 @@
 <h1 class="mb-5">Tarjetas de Estuidos</h1>
-<div class="px-md-5 py-4 ">
+<div *ngIf="!loading" class="px-md-5 py-4 ">
   <table class="table table-hover table-sm">
     <thead>
       <tr>
@@ -53,6 +53,12 @@
       </tr>
     </tbody>
   </table>
+</div>
+<div *ngIf="loading" class="loadingio-eclipse bg-light w-100 container">
+  <div class="ldio-rpinwye8j0b ">
+    <div>
+    </div>
+  </div>
 </div>
 <a href="editar/form/add/estudios"><button class="btn btn-light border-bottom border-top  float-center"><i
       class="fa-solid fa-plus pe-2 "></i>Agregar</button></a>
